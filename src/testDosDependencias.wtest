@@ -7,7 +7,7 @@ import colores.*
 test "dependencias" {
 	const cachito = new Corsa(color= rojo)
 	const deportes = new Dependencia(cantidadDeEmpleados = 45, flotaDeRodados = [cachito, new Corsa(color=azul), new Corsa(color=verde), new Kwid(tanqueAdicional=true), new Especial(capacidad=5, velocidadMaxima=160, peso=1200, color=beige)])
-	trafic.interior(interiorPopular) /*¿Porqué me dice que se esperaba "interiorComodo", si estoy usando un setter?*/
+	trafic.interior(interiorPopular) 
 	trafic.motor(motorBataton)
 	const cultura = new Dependencia(cantidadDeEmpleados=31, flotaDeRodados = [trafic, cachito, new Kwid(tanqueAdicional=true), new Kwid(tanqueAdicional=true), new Kwid(tanqueAdicional=false)])
 

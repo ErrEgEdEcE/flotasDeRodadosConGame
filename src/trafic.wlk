@@ -1,6 +1,6 @@
 import colores.*
 object trafic {
-	var property interior = interiorComodo
+	var property interior = interiorPopular
 	var property motor = motorBataton
 	
 	method color() { return blanco}
