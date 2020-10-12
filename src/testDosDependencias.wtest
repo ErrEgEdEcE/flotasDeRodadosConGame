@@ -1,0 +1,28 @@
+import rodados.*
+import trafic.*
+import dependencias.*
+import pedidos.*
+import colores.*
+
+test "dependencias" {
+	const cachito = new Corsa(color= rojo)
+	const deportes = new Dependencia(cantidadDeEmpleados = 45, flotaDeRodados = [cachito, new Corsa(color=azul), new Corsa(color=verde), new Kwid(tanqueAdicional=true), new Especial(capacidad=5, velocidadMaxima=160, peso=1200, color=beige)])
+	trafic.interior(interiorPopular) /*¿Porqué me dice que se esperaba "interiorComodo", si estoy usando un setter?*/
+	trafic.motor(motorBataton)
+	const cultura = new Dependencia(cantidadDeEmpleados=31, flotaDeRodados = [trafic, cachito, new Kwid(tanqueAdicional=true), new Kwid(tanqueAdicional=true), new Kwid(tanqueAdicional=false)])
+
+	assert.equals(deportes.pesoTotalFlota(), 6450)
+	assert.equals(cultura.pesoTotalFlota(), 10700)
+	assert.that(deportes.estaBienEquipada())
+	assert.notThat(cultura.estaBienEquipada())
+	assert.equals(deportes.capacidadTotalEnColor("azul"), 7)
+	assert.equals(cultura.capacidadTotalEnColor("azul"), 10)
+	assert.equals(deportes.colorDelRodadoMasRapido(), "beige")
+	assert.equals(cultura.colorDelRodadoMasRapido(), "rojo")
+	assert.that(deportes.esGrande())
+	assert.notThat(cultura.esGrande())
+	assert.equals(deportes.capacidadFaltante(), 25)
+	assert.equals(cultura.capacidadFaltante(), 5)
+
+}
+

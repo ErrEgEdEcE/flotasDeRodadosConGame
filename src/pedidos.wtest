@@ -1,0 +1,25 @@
+import rodados.*
+import pedidos.*
+import colores.*
+
+test "pedido" {
+	const cachito = new Corsa(color=rojo)
+	const pedido1 = new Pedido(distancia=960, tiempoMaximo=8, cantidadDePasajeros=4, coloresIncompatibles=#{azul, negro})
+	
+	assert.equals(pedido1.velocidadRequerida(), 120)
+	assert.that(pedido1.puedeSatisfacerlo(cachito))
+	
+	pedido1.coloresIncompatibles().add(rojo)
+	assert.notThat(pedido1.puedeSatisfacerlo(cachito))
+    pedido1.coloresIncompatibles().remove(rojo)
+    assert.that(pedido1.puedeSatisfacerlo(cachito))
+    
+    pedido1.cantidadDePasajeros(6)
+    assert.notThat(pedido1.puedeSatisfacerlo(cachito))
+    pedido1.cantidadDePasajeros(4)
+    assert.that(pedido1.puedeSatisfacerlo(cachito))
+    
+    pedido1.tiempoMaximo(6)
+    assert.notThat(pedido1.puedeSatisfacerlo(cachito))
+	
+}

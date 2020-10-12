@@ -1,7 +1,21 @@
 import wollok.game.*
+import rodados.*
+import colores.*
 
 program corsasEnElGame {
-	// hacer las inicializaciones necesarias 
-	
+	game.title("Corsas en el Game")
+	game.height(10)
+	game.width(15)
+	game.ground("calle.png")
+	var corsita = new Corsa(color= rojo)
+	game.addVisual(corsita)
+	game.say(corsita, "Conduzca con precaución")
+	keyboard.up().onPressDo {corsita.moverNorte()}
+	keyboard.down().onPressDo {corsita.moverSur()}
+	keyboard.right().onPressDo {corsita.moverEste()}
+	keyboard.left().onPressDo {corsita.moverOeste()}
+	keyboard.r().onPressDo {corsita.image(rojo.image())}
+	keyboard.a().onPressDo {corsita.image(azul.image())}
+	keyboard.v().onPressDo {corsita.image(verde.image())}
 	game.start()
 }
